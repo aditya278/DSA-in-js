@@ -1,20 +1,28 @@
 // Implementing the Stack
 class Stack {
-    constructor(maxLength) {
+    constructor(maxLength = Number.MAX_SAFE_INTEGER) {
         this.stack = [];
         this.maxLength = maxLength;
     }
 
     push(value) {
-        return this.stack.length === maxLength ? "Stack Overflow" : this.stack.push(value);
+        return this.isFull() ? "Stack Overflow" : this.stack.push(value);
     }
 
     pop() {
-        return this.stack.length === 0 ? "Stack Underflow" : this.stack.pop();
+        return this.isEmpty() ? "Stack Underflow" : this.stack.pop();
     }
 
     peek() {
         return this.stack[this.stack.length - 1];
+    }
+
+    isEmpty() {
+        return this.stack.length === 0 ? true : false;
+    }
+
+    isFull() {
+        return this.stack.length  === this.maxLength ? true : false;
     }
 
     traverse() {
