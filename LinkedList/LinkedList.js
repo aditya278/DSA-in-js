@@ -26,6 +26,21 @@ class LinkedList {
         return list;
     }
 
+    deleteNodeByValue(value) {
+        let prev = null;
+        let ptr = this.head;
+        while(ptr.next) {
+            if(ptr.value === value) {
+                prev.next = ptr.next;
+                delete this.ptr;
+                break;
+            }
+            else {
+                prev = ptr;
+                ptr = ptr.next;
+            }
+        }
+    }
 }
 
 // A Node class defining the structure of the node
@@ -45,6 +60,8 @@ function main() {
     linkedList.addNewNode(35);
     linkedList.addNewNode(45);
     linkedList.addNewNode(55);
+    console.log(linkedList.traverse());
+    linkedList.deleteNodeByValue(35);
     console.log(linkedList.traverse());
 }
 
