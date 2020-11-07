@@ -41,6 +41,19 @@ class LinkedList {
             }
         }
     }
+    
+    updateValueAt(index, value) {
+        let ptr = this.head;
+        let idx = 0;
+        while(ptr.next) {
+            idx++;
+            if(idx === index) {
+                ptr.value = value;
+                break;
+            }
+            ptr = ptr.next;
+        }
+    }
 }
 
 // A Node class defining the structure of the node
@@ -59,6 +72,9 @@ function main() {
     console.log(linkedList.traverse());
     linkedList.addNewNode(35);
     linkedList.addNewNode(45);
+    console.log("Before Update: " + linkedList.traverse());
+    linkedList.updateValueAt(3,12);
+    console.log("After Update: " + linkedList.traverse());
     linkedList.addNewNode(55);
     console.log(linkedList.traverse());
     linkedList.deleteNodeByValue(35);

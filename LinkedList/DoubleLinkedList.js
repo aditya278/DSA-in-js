@@ -1,0 +1,72 @@
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    addToHead(value) {
+        const newNode = new Node(null, value, this.head);
+        if(this.head) {
+            this.head.prev = newNode;
+        }
+        else {
+            this.tail = newNode;
+        }
+        this.head = newNode;
+    }
+
+    addToTail(value) {
+        const newNode = new Node(this.tail, value, null);
+        if(this.tail) {
+            this.tail.next = newNode;
+        }
+        else {
+            this.head = newNode;
+        }
+        this.tail = newNode;
+    }
+
+    traverse(order = 'asc') {
+        let list = [];
+        if(order === 'asc') {
+            let ptr = this.head;
+            while(ptr) {
+                list.push(ptr.value);
+                ptr = ptr.next;
+            }
+            return list;
+        }
+        else {
+            let ptr = this.tail;
+            while(ptr) {
+                list.push(ptr.value);
+                ptr = ptr.prev;
+            }
+            return list;
+        }
+    }
+
+}
+
+class Node {
+    constructor(prev, value, next) {
+        this.prev = prev;
+        this.value = value;
+        this.next = next;
+    }
+}
+
+function main() {
+    const linkedList = new LinkedList();
+    linkedList.addToHead(10);
+    linkedList.addToHead(20);
+    linkedList.addToHead(30);
+    linkedList.addToHead(40);
+    console.log(linkedList.traverse());
+    console.log(linkedList.traverse('desc'));
+    linkedList.addToTail(50);
+    linkedList.addToTail(60);
+    console.log(linkedList.traverse());
+    console.log(linkedList.traverse('desc'));
+}
+main();
