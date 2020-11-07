@@ -46,6 +46,19 @@ class LinkedList {
         }
     }
 
+    deleteNodeByValue(value) {
+        let ptr = this.head;
+        while(ptr.next) {
+            if(ptr.value === value) {
+                ptr.prev.next = ptr.next;
+                ptr.next.prev = ptr.prev;
+                delete this.ptr;
+                break;
+            }
+            ptr = ptr.next;
+        }
+    }
+
 }
 
 class Node {
@@ -68,5 +81,7 @@ function main() {
     linkedList.addToTail(60);
     console.log(linkedList.traverse());
     console.log(linkedList.traverse('desc'));
+    linkedList.deleteNodeByValue(20);
+    console.log(linkedList.traverse());
 }
 main();
