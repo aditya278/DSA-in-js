@@ -20,6 +20,15 @@ class Queue {
     deQueue() {
         return this.stack1.length > 0 ? this.stack1.pop() : "Queue Underflow";
     }
+
+    front() {
+        return this.stack1.length > 0 ? this.stack1[0] : "Queue Empty";
+    }
+
+    rear() {
+        return this.stack1.length > 0 ? this.stack1[this.stack1.length - 1] : "Queue Empty";
+    }
+
 }
 
 const q = new Queue();

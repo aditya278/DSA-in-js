@@ -6,7 +6,7 @@ class Queue {
     }
 
     enqueue(value) {
-        return this.queue.length === this.maxLength ? "Queue Overflow" : this.queue.unshift(value);
+        return this.queue.length === this.maxLength ? "Queue Overflow" : this.queue.push(value);
     }
 
     dequeue() {
