@@ -26,6 +26,21 @@ class LinkedList {
         this.tail = newNode;
     }
 
+    addNewNodeAt(index, value) {
+        const newNode = new Node(this.tail, value, this.head);
+        let ptr = this.head;
+        let idx = 0;
+        while(ptr) {
+            if(idx === index) {
+                newNode.prev = ptr.prev;
+                newNode.next = ptr.next;
+                
+            }
+            idx++;
+            ptr = ptr.next;
+        }
+    }
+
     traverse(order = 'asc') {
         let list = [];
         if(order === 'asc') {

@@ -5,7 +5,7 @@ class LinkedList {
         this.tail = null;
     }
 
-    addNewNode (value) {
+    addNewHeadNode (value) {
         const newNode = new Node(value, null);
         if(this.tail) {
             this.tail.next = newNode;
@@ -14,6 +14,22 @@ class LinkedList {
             this.head = newNode;
         }
         this.tail = newNode;
+    }
+
+    addNewNodeAt(index, value) {
+        const newNode = new Node(value, null);
+        let ptr = this.head;
+        let prev = null;
+        let idx = 0;
+        while(ptr) {
+            if(idx === index) {
+                prev.next = newNode;
+                newNode.next = ptr.next;
+            }
+            idx++;
+            prev = ptr;
+            ptr = ptr.next;
+        }
     }
 
     traverse () {
@@ -45,7 +61,7 @@ class LinkedList {
     updateValueAt(index, value) {
         let ptr = this.head;
         let idx = 0;
-        while(ptr.next) {
+        while(ptr) {
             idx++;
             if(idx === index) {
                 ptr.value = value;
@@ -66,16 +82,16 @@ class Node {
 
 function main() {
     const linkedList = new LinkedList();
-    linkedList.addNewNode(5);
-    linkedList.addNewNode(15);
-    linkedList.addNewNode(25);
+    linkedList.addNewHeadNode(5);
+    linkedList.addNewHeadNode(15);
+    linkedList.addNewHeadNode(25);
     console.log(linkedList.traverse());
-    linkedList.addNewNode(35);
-    linkedList.addNewNode(45);
+    linkedList.addNewHeadNode(35);
+    linkedList.addNewNodeAt(2, 45);
     console.log("Before Update: " + linkedList.traverse());
     linkedList.updateValueAt(3,12);
     console.log("After Update: " + linkedList.traverse());
-    linkedList.addNewNode(55);
+    linkedList.addNewHeadNode(55);
     console.log(linkedList.traverse());
     linkedList.deleteNodeByValue(35);
     console.log(linkedList.traverse());
