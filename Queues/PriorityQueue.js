@@ -38,4 +38,21 @@ class PriorityQueue {
     dequeue() {
         return this.queue.shift();
     }
+
+    front() {
+        return this.queue[0];
+    }
+
+    last() {
+        return this.queue[this.queue.length - 1];
+    }
 }
+
+const pQueue = new PriorityQueue();
+pQueue.enqueue(['Aditya', 2])
+pQueue.enqueue(['Shukla', 3])
+pQueue.enqueue(['Rohit', 1])
+console.log("Queue: " + pQueue.printQueue());
+pQueue.dequeue();
+console.log("Front: " + pQueue.front());
+console.log("Queue: " + pQueue.printQueue());

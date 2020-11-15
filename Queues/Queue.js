@@ -13,7 +13,7 @@ class Queue {
         return this.queue.length === 0 ? "Queue Underflow" : this.queue.shift();
     }
 
-    first() {
+    front() {
         return this.queue[0];
     }
 
@@ -37,7 +37,7 @@ console.log("Enqueuing.. " + queue.enqueue(35));
 console.log("Enqueuing.. " + queue.enqueue(45));
 console.log("Enqueuing.. " + queue.enqueue(55));
 
-console.log("First: " + queue.first());
+console.log("First: " + queue.front());
 console.log("Queue: " + queue.traverse());
 console.log("Last: " + queue.last());
 
@@ -45,7 +45,7 @@ console.log("Dequeued: " + queue.dequeue());
 console.log("Dequeued: " + queue.dequeue());
 console.log("Dequeued: " + queue.dequeue());
 
-console.log("First: " + queue.first());
+console.log("First: " + queue.front());
 console.log("Queue: " + queue.traverse());
 console.log("Last: " + queue.last());
 
