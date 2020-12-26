@@ -36,7 +36,7 @@ const convert = (infix) => {
 
         //If it is an operator
         else {
-            while(stack.length !== 0 && precedence[stack[stack.length-1]] >= precedence[char]) {
+            while(stack.length !== 0 && precedence[stack[stack.length-1]] >= precedence[char] && stack[stack.length-1] !== char) {
                 postfix.push(stack.pop());
             }
             stack.push(char);
